@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-gray-100 flex bg-local" style="background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/architect.svg')">
+    <div class="bg-gray-100 mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
+        <h2>Edit Blog</h2>
+      <form action="/addUpdateBlog" method="post" enctype="multipart/form-data">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+          <div class="-mx-3 md:flex mb-6">
+            <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+              <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="title">
+                Title
+              </label>
+              <input id="title" type="text" name="title" value="<%= data.title %>" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" >
+              <div>
+                <span class="text-red-500 text-xs italic">
+                  Please fill out this field.
+                </span>
+              </div>
+            </div>
+            <div class="md:w-1/2 px-3">
+              <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="author">
+               Author
+              </label>
+              <input id="author" type="text" name="author" value="<%= data.author %>" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" id="title" type="text" placeholder="Software Engineer">
+            </div>
+          </div>
+          <div class="-mx-3 md:flex mb-6">
+            <div class="md:w-full px-3">
+              <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="Content">
+                Content
+              </label>
+              <textarea id="content" rows="10" name="content"
+              class="w-full px-3 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
+              required><%= data.content %>
+          </textarea>
+            </div>
+          </div>
+          <div class="mb-6">
+            <label for="cover-photo" class="block text-gray-400 mb-2">Cover photo</label>
+            <div class="mt-4 flex text-sm leading-6 text-gray-600">
+                <label for="file-upload"
+                    class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                    <span class="px-2">Upload a file</span>
+                    <input id="file-upload" name="image" type="file" class="sr-only">
+                </label>
+            </div>
+            <img src="<%= data.image %>" class="w-40 h-40 rounded-lg mt-4" alt="">
+        </div>
+        <button type=" submit"
+        class="w-full py-2 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-500 transition duration-200">Update
+        Blog</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

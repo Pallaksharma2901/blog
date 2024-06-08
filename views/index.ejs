@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f5f5;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.card-container {
+  width: 300px;
+  height: 440px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin: auto;
+  box-shadow: 0 2px 20px rgba(0,0,0, 0.1);
+  overflow: hidden;
+}
+
+.card-image img {
+  height: 220px;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+  background-size: cover;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 16px;
+  min-height: 200px;
+}
+
+.card-badge {
+  text-transform: uppercase;
+  background-color: #fff;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 70px;
+  margin: 0;
+  font-size: 12px;
+}
+
+.card-badge-blue {
+  background-color: #92d4e4;
+}
+
+.card-badge-purple {
+  background-color: #3d1d94;
+}
+
+.card-badge-pink {
+  background-color: #c62bcb;
+}
+
+.card-body h1 {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.card-body p {
+  font-size: 14px;
+  margin: 8px 0 16px 0;
+}
+
+.card-author {
+  display: flex;
+  align-items: center;
+}
+
+.card-author p {
+  margin: 0 16px;
+  font-size: 12px;
+}
+
+.card-author p:last-child {
+  color: #888;
+}
+
+.card-author img {
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  margin-top: auto;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+    </style>
+</head>
+<body>
+    <body class="bg-gray-100 flex bg-local" style="background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/architect.svg')" >
+        <section class="container">
+
+            <header class="w-full max-w-4xl flex justify-between items-center border-b border-gray-700 py-4 mb-8">
+                <div class="text-2xl font-bold">My Blog</div>
+                <nav class="space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white">Home</a>
+                    <a href="#" class="text-gray-400 hover:text-white">About</a>
+                    <a href="/addUpdateBlog" class="text-gray-400 hover:text-white">Add Blogs</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+                    <a href="/logout" class="text-gray-400 hover:text-white">Logout</a>
+                </nav>
+            </header>
+
+            <section class="grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <% blogs.map((blog)=>{ %>
+                    <article class="p-6 rounded-lg shadow-2xl border">
+                        <img src="<%= blog.image %>" class="rounded-lg w-full h-40 " alt="">
+                        <h2 class="text-2xl font-bold my-3">
+                            <%= blog.title %>
+                        </h2>   
+                        <h4 class="text-l font-semibold mb-2">
+                            <%= blog.author %>
+                        </h4>
+                        <p class="text-gray-400 truncate">
+                            <%= blog.content %>
+                        </p>
+                        <div class="flex justify-between">
+                            <a href="/addUpdateBlog?id=<%= blog._id %>"
+                                class="text-gray-400 hover:text-white mt-4 block">Edit
+                                blog</a>
+                            <a href="/deleteBlog?id=<%= blog._id %>"
+                                class="text-gray-400 hover:text-white mt-4 block">Delete
+                                blog</a>
+                        </div>
+                    </article>
+                <% }) %>
+            </section>
+          <!-- <div class="card-container">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="a brand new sports car" />
+            </div>
+            <div class="card-body">
+              <span class="card-badge card-badge-blue">Car design</span>
+              <h1>
+                Why is the sports cars so well designed?
+              </h1>
+              <p class="card-subtitle">
+                An exploration into the car design industry and how it works
+              </p>
+              <div class="card-author">
+                <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="author avatar" />
+                <div class="author-info">
+                  <p class="author-name">John Doe</p>
+                  <p class="post-timestamp">2h ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="card-container">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1504728078670-d0a59873c8c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="a landscape view full of baloons" />
+            </div>
+            <div class="card-body">
+              <span class="card-badge card-badge-purple">Adventure</span>
+              <h1>
+                Discover new adventures over the world
+              </h1>
+              <p class="card-subtitle">
+                Adventure and baloons are trends these days
+              </p>
+              <div class="card-author">
+                <img src="https://images.unsplash.com/photo-1504728078670-d0a59873c8c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="author avatar" />
+                <div class="author-info">
+                  <p class="author-name">John Doe</p>
+                  <p class="post-timestamp">2h ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="card-container">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1506422748879-887454f9cdff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="a city full of buildings" />
+            </div>
+            <div class="card-body">
+              <span class="card-badge card-badge-pink">Engineering</span>
+              <h1>
+                Living in downtown in the biggest cities
+              </h1>
+              <p class="card-subtitle">
+                Citizens of the biggest cities in the world talk about their lives
+              </p>
+              <div class="card-author">
+                <img src="https://images.unsplash.com/photo-1506422748879-887454f9cdff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="author avatar" />
+                <div class="author-info">
+                  <p>John Doe</p>
+                  <p>2h ago</p>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </section>
+      </body>
+    </html>
+    
+  
+</body>
+</html>
