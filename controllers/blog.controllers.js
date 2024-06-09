@@ -1,7 +1,7 @@
 const multer = require("multer");
 const fs = require("fs");
 const blog = require("../models/blog.schema");
-// const user = require("../models/user.schema");
+const user = require("../models/user.schema");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -81,7 +81,9 @@ const addUpdateBlog = async (req, res) => {
             }
         }
     } else {
-        let image = req.file.path
+        let image = req.file.path;
+
+        console.log(image);
         try {
             let data = await blog.create({ ...req.body, image });
             return res.redirect("/");

@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-100 flex bg-local" style="background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/architect.svg')">
     <div class="bg-gray-100 mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
-        <h2>Edit Blog</h2>
+        <h2 class="text-2xl font-bold text-center mb-4">Edit Blog</h2>
       <form action="/addUpdateBlog" method="post" enctype="multipart/form-data">
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
           <div class="-mx-3 md:flex mb-6">
@@ -18,11 +18,6 @@
                 Title
               </label>
               <input id="title" type="text" name="title" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" >
-              <div>
-                <span class="text-red-500 text-xs italic">
-                  Please fill out this field.
-                </span>
-              </div>
             </div>
             <div class="md:w-1/2 px-3">
               <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="author">
@@ -31,13 +26,13 @@
               <input id="author" type="text" name="author"  class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" id="title" type="text" >
             </div>
           </div>
-          <div class="-mx-3 md:flex mb-6">
-            <div class="md:w-full px-3">
+          <div class=" md:flex mb-6">
+            <div class="md:w-full px-1">
               <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="Content">
                 Content
               </label>
-              <textarea id="content" rows="10" name="content"
-              class="w-full px-3 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
+              <textarea id="content" rows="3" name="content"
+              class="w-full px-3 py-2 bg-gray-200 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
               required>
           </textarea>
             </div>
@@ -52,7 +47,7 @@
                 </label>
             </div>
         </div>
-        <button type=" submit"
+        <button type="submit"
         class="w-full py-2 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-500 transition duration-200">Add
         Blog</button>
         </div>

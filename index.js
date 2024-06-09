@@ -20,5 +20,6 @@ app.listen(8000,(err)=>{
         console.log("error starting server");
         return false;
     }
-    console.log("http://localhose:8000");
+    console.log("http://localhost:8000");
+    db();
 })

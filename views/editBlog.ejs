@@ -14,9 +14,7 @@
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
           <div class="-mx-3 md:flex mb-6">
             <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-              <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="title">
-                Title
-              </label>
+              <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="title">Title</label>
               <input id="title" type="text" name="title" value="<%= data.title %>" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" >
               <div>
                 <span class="text-red-500 text-xs italic">
@@ -36,8 +34,8 @@
               <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="Content">
                 Content
               </label>
-              <textarea id="content" rows="10" name="content"
-              class="w-full px-3 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
+              <textarea id="content" rows="3" name="content"
+              class="w-full px-3 py-2 bg-gray-200 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
               required><%= data.content %>
           </textarea>
             </div>
