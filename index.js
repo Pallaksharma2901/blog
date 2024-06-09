@@ -22,4 +22,4 @@ app.listen(8000,(err)=>{
     }
     console.log("http://localhost:8000");
     db();
-})
+});

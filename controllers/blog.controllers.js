@@ -16,6 +16,21 @@ const uploadImg = multer({ storage: storage }).single("image");
 
 let blogId;
 
+const signUpPage = (req, res) => {
+    return res.render("signup")
+
+}
+const logInPage = (req, res) => {
+    return res.render("login")
+}
+
+const logout = (req, res) => {
+    res.clearCookie('USER');
+    res.redirect('/logIn');
+}
+
+
+
 const home = async (req, res) => {
     try {
         let data = await blog.find();
@@ -55,6 +70,25 @@ const deleteBlog = async (req, res) => {
     }
 }
 
+
+const signUp = async (req, res) => {
+    let data = await user.create(req.body);
+    return res.redirect("/logIn");
+}
+
+const logIn = async (req, res) => {
+    const { email, password } = req.body
+    let User = await user.findOne({ email: email })
+
+    if (User && User.password === password) {
+        return res.cookie('USER', User.id).redirect("/")
+    } else {
+        console.log("Email or password must be wrong");
+        return res.redirect("/logIn")
+    }
+}
+
+
 const addUpdateBlog = async (req, res) => {
     if (blogId) {
         if (req.file) {
@@ -93,4 +127,4 @@ const addUpdateBlog = async (req, res) => {
     }
 }
 
-module.exports = { home, getBlog, deleteBlog, addUpdateBlog, uploadImg }
+module.exports = { home, getBlog, deleteBlog, addUpdateBlog, uploadImg, logIn, signUp, logout, logInPage, signUpPage }
