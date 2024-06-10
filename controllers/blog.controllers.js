@@ -127,4 +127,13 @@ const addUpdateBlog = async (req, res) => {
     }
 }
 
-module.exports = { home, getBlog, deleteBlog, addUpdateBlog, uploadImg, logIn, signUp, logout, logInPage, signUpPage }
+const local = (req,res)=>{
+    res.send("login...");
+}
+
+const profile = (req,res) =>{
+    res.send(req.User)
+}
+
+
+module.exports = { home, getBlog, deleteBlog, addUpdateBlog, uploadImg, logIn, signUp, logout, logInPage, signUpPage,local,profile }
